@@ -416,7 +416,7 @@ body {
 
 .user-message .message-content {
     background: linear-gradient(135deg, var(--primary-health) 0%, var(--secondary-health) 100%);
-    color: var(--white);
+    /* color: var(--white); */
 }
 
 .message-content {
@@ -1107,7 +1107,7 @@ header h1 .badge {
 
 .user-message .message-content {
     background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-    color: var(--white);
+    /* color: var(--white); */
     border-bottom-right-radius: 0.25rem;
 }
 
