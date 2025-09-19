@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive healthcare portal with AI chatbot, hospital finder, emergency services, and medical information">
+    <meta name="keywords" content="healthcare, hospital finder, emergency services, medical information, vaccination, preventive care">
+    <title>MedXpert AI - Complete Healthcare Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="nav-icon">🏥</span>
+                <span class="nav-title">MedXpert AI</span>
+            </div>
+            <div class="nav-menu">
+                <button class="nav-link active" onclick="showSection('home')">
+                    <span class="nav-icon">🏠</span>
+                    <span>Home</span>
+                </button>
+                <button class="nav-link" onclick="showSection('chat')">
+                    <span class="nav-icon">💬</span>
+                    <span>AI Chat</span>
+                </button>
+                <button class="nav-link" onclick="showSection('hospitals')">
+                    <span class="nav-icon">🏥</span>
+                    <span>Hospitals</span>
+                </button>
+                <button class="nav-link" onclick="showSection('emergency')">
+                    <span class="nav-icon">🚨</span>
+                    <span>Emergency</span>
+                </button>
+                <button class="nav-link" onclick="showSection('services')">
+                    <span class="nav-icon">🛍️</span>
+                    <span>Services</span>
+                </button>
+                <button class="nav-link" onclick="showSection('education')">
+                    <span class="nav-icon">📚</span>
+                    <span>Education</span>
+                </button>
+            </div>
+            <div class="nav-actions">
+                <select id="languageSelect" aria-label="Select language">
+                    <option value="en">🇺🇸 EN</option>
+                    <option value="hi">🇮🇳 HI</option>
+                    <option value="ta">🇮🇳 TA</option>
+                    <option value="te">🇮🇳 TE</option>
+                    <option value="ur">🇵🇰 UR</option>
+                    <option value="or">🇮🇳 OR</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="main-container">
+        <!-- Home Section -->
+        <section id="home-section" class="content-section active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-icon">🏥</span>
+                        Your Complete Healthcare Companion
+                    </h1>
+                    <p class="hero-subtitle">Access medical information, find hospitals, get emergency help, and connect with healthcare services - all in one place.</p>
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Hospitals</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Available</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">6</div>
+                            <div class="stat-label">Languages</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">80%</div>
+                            <div class="stat-label">Accuracy</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-illustration">
+                        <div class="floating-icon">🏥</div>
+                        <div class="floating-icon">💊</div>
+                        <div class="floating-icon">🩺</div>
+                        <div class="floating-icon">🚑</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-access">
+                <h2>Quick Access</h2>
+                <div class="quick-buttons">
+                    <button class="quick-btn primary" onclick="showSection('chat')">
+                        <span class="btn-icon">🤖</span>
+                        <span class="btn-text">Ask AI Assistant</span>
+                    </button>
+                    <button class="quick-btn secondary" onclick="showSection('hospitals')">
+                        <span class="btn-icon">🏥</span>
+                        <span class="btn-text">Find Hospitals</span>
+                    </button>
+                    <button class="quick-btn danger" onclick="showSection('emergency')">
+                        <span class="btn-icon">🚨</span>
+                        <span class="btn-text">Emergency Help</span>
+                    </button>
+                    <button class="quick-btn info" onclick="showSection('services')">
+                        <span class="btn-icon">🛍️</span>
+                        <span class="btn-text">Essential Services</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chat Section -->
+        <section id="chat-section" class="content-section">
+            <div class="section-header">
+                <h2>AI Health Assistant</h2>
+                <p>Get instant answers to your health questions from our AI-powered assistant</p>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Chat messages">
+                    <div class="message bot-message">
+                        <div class="message-avatar" aria-label="MedXpert AI Assistant">🤖</div>
+                        <div class="message-content">
+                            <p><strong>Hello! I'm MedXpert AI 👋</strong></p>
+                            <p>I'm here to help you with:</p>
+                            <ul style="margin: 0.5rem 0; padding-left: 1.2rem;">
+                                <li>Disease information and symptoms</li>
+                                <li>Vaccination schedules</li>
+                                <li>Prevention strategies</li>
+                                <li>Health awareness topics</li>
+                                <li>Hospital recommendations</li>
+                            </ul>
+                            <p>What health topic would you like to explore today?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input">
+                    <textarea
+                        id="messageInput"
+                        placeholder="Ask me anything about health, diseases, vaccinations..."
+                        autocomplete="off"
+                        rows="1"
+                        aria-label="Type your health question"
+                    ></textarea>
+                    <button id="sendButton" aria-label="Send message">
+                        <span class="send-icon">📤</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hospitals Section -->
+        <section id="hospitals-section" class="content-section">
+            <div class="section-header">
+                <h2>Find Hospitals Near You</h2>
+                <p>Locate hospitals, check services, and get contact information</p>
+            </div>
+
+            <div class="search-section">
+                <div class="search-box">
+                    <input type="text" id="hospitalSearch" placeholder="Enter city name (e.g., Delhi, Mumbai, Chennai)">
+                    <button onclick="searchHospitals()" class="search-btn">
+                        <span class="search-icon">🔍</span>
+                        Search
+                    </button>
+                </div>
+            </div>
+
+            <div id="hospitalsList" class="hospitals-grid">
+                <!-- Hospitals will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Emergency Section -->
+        <section id="emergency-section" class="content-section">
+            <div class="section-header">
+                <h2>Emergency Services</h2>
+                <p>Quick access to emergency contacts and essential services</p>
+            </div>
+
+            <div class="emergency-grid">
+                <div class="emergency-card ambulance">
+                    <div class="emergency-icon">🚑</div>
+                    <h3>Ambulance</h3>
+                    <p class="emergency-number">108</p>
+                    <p class="emergency-desc">Free ambulance service available 24/7 across India</p>
+                    <button class="emergency-btn" onclick="callEmergency('108')">Call Now</button>
+                </div>
+
+                <div class="emergency-card police">
+                    <div class="emergency-icon">👮</div>
+                    <h3>Police</h3>
+                    <p class="emergency-number">100</p>
+                    <p class="emergency-desc">Emergency police services</p>
+                    <button class="emergency-btn" onclick="callEmergency('100')">Call Now</button>
+                </div>
+
+                <div class="emergency-card fire">
+                    <div class="emergency-icon">🚒</div>
+                    <h3>Fire</h3>
+                    <p class="emergency-number">101</p>
+                    <p class="emergency-desc">Fire emergency services</p>
+                    <button class="emergency-btn" onclick="callEmergency('101')">Call Now</button>
+                </div>
+
+                <div class="emergency-card women">
+                    <div class="emergency-icon">👩</div>
+                    <h3>Women Helpline</h3>
+                    <p class="emergency-number">1091</p>
+                    <p class="emergency-desc">Women emergency assistance</p>
+                    <button class="emergency-btn" onclick="callEmergency('1091')">Call Now</button>
+                </div>
+
+                <div class="emergency-card child">
+                    <div class="emergency-icon">👶</div>
+                    <h3>Child Helpline</h3>
+                    <p class="emergency-number">1098</p>
+                    <p class="emergency-desc">Child emergency assistance</p>
+                    <button class="emergency-btn" onclick="callEmergency('1098')">Call Now</button>
+                </div>
+
+                <div class="emergency-card mental">
+                    <div class="emergency-icon">🧠</div>
+                    <h3>Mental Health</h3>
+                    <p class="emergency-number">1800-121-4567</p>
+                    <p class="emergency-desc">Mental health helpline</p>
+                    <button class="emergency-btn" onclick="callEmergency('18001214567')">Call Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services-section" class="content-section">
+            <div class="section-header">
+                <h2>Essential Services</h2>
+                <p>Access to pharmacies, blood banks, diagnostic centers, and medical stores</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💊</div>
+                    <h3>Pharmacies</h3>
+                    <p>24/7 pharmacy services and medicine delivery</p>
+                    <div class="service-contacts">
+                        <p><strong>Emergency:</strong> Local pharmacy numbers</p>
+                        <p><strong>Online:</strong> Available through major platforms</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🩸</div>
+                    <h3>Blood Banks</h3>
+                    <p>Blood donation and emergency blood supply</p>
+                    <div class="service-contacts">
+                        <p><strong>Indian Red Cross:</strong> +91-11-23716441</p>
+                        <p><strong>Rotary Blood Bank:</strong> +91-22-2409-1111</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔬</div>
+                    <h3>Diagnostic Centers</h3>
+                    <p>Blood tests, X-rays, ultrasounds, and ECG</p>
+                    <div class="service-contacts">
+                        <p><strong>Government Centers:</strong> Affordable diagnostic services</p>
+                        <p><strong>Private Labs:</strong> Available in major cities</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🏪</div>
+                    <h3>Medical Stores</h3>
+                    <p>Essential medicines at subsidized rates</p>
+                    <div class="service-contacts">
+                        <p><strong>Government Stores:</strong> Generic medicines</p>
+                        <p><strong>Local Pharmacies:</strong> 24/7 availability</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education-section" class="content-section">
+            <div class="section-header">
+                <h2>Health Education</h2>
+                <p>Learn about preventive healthcare, vaccination, and healthy living</p>
+            </div>
+
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-icon">🧼</div>
+                    <h3>Hygiene & Sanitation</h3>
+                    <p>Learn proper hand washing, oral hygiene, and environmental cleanliness</p>
+                    <button class="learn-btn" onclick="showEducation('hygiene')">Learn More</button>
+                </div>
+
+                <div class="education-card">
+                    <div class="education-icon">🥗</div>
+                    <h3>Nutrition</h3>
+                    <p>Understand balanced diet, micronutrients, and healthy eating habits</p>
+                    <button class="learn-btn" onclick="showEducation('nutrition')">Learn More</button>
+                </div>
+
+                <div class="education-card">
+                    <div class="education-icon">👶</div>
+                    <h3>Maternal & Child Health</h3>
+                    <p>Information about antenatal care, breastfeeding, and child development</p>
+                    <button class="learn-btn" onclick="showEducation('maternal')">Learn More</button>
+                </div>
+
+                <div class="education-card">
+                    <div class="education-icon">🧠</div>
+                    <h3>Mental Health</h3>
+                    <p>Stress management, mental health awareness, and well-being tips</p>
+                    <button class="learn-btn" onclick="showEducation('mental')">Learn More</button>
+                </div>
+
+                <div class="education-card">
+                    <div class="education-icon">💉</div>
+                    <h3>Vaccination</h3>
+                    <p>Complete vaccination schedules for all age groups</p>
+                    <button class="learn-btn" onclick="showVaccinations()">Learn More</button>
+                </div>
+
+                <div class="education-card">
+                    <div class="education-icon">🚨</div>
+                    <h3>Outbreak Awareness</h3>
+                    <p>Stay informed about disease outbreaks and prevention measures</p>
+                    <button class="learn-btn" onclick="showOutbreaks()">Learn More</button>
+                </div>
+            </div>
+        </section>
+
+        <footer class="app-footer">
+            <div class="footer-content">
+                <p>
+                    <span class="medical-disclaimer">⚠️ This is for informational purposes only. Consult healthcare professionals for medical advice.</span>
+                </p>
+                <div class="footer-links">
+                    <a href="#" aria-label="Privacy Policy">Privacy</a>
+                    <span class="separator">•</span>
+                    <a href="#" aria-label="Terms of Service">Terms</a>
+                    <span class="separator">•</span>
+                    <a href="#" aria-label="Contact Support">Support</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
